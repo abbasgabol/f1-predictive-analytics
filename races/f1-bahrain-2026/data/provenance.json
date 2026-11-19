@@ -1,0 +1,17 @@
+{
+  "event": "Bahrain Grand Prix in Malaysia, Sepang",
+  "cutoff": "End of qualifying, 3 October 2026",
+  "requested_urls": [
+    "https://www.formula1.com/en/results/2026/races/1295/azerbaijan/race-result",
+    "https://www.formula1.com/en/results/2026/races/1308/bahrain/qualifying"
+  ],
+  "target_race_result_requested": false,
+  "historical_sources": "Prior Azerbaijan-project snapshots through Spain; official Azerbaijan race classification for round 15.",
+  "missing_target_qualifying_drivers": [],
+  "historical_nc_handling": "Official classification table order for trailing NC ranks, consistent with the existing preprocessing rule.",
+  "snapshot_limitation": "Retrospective qualifying classifications; exact as-of publication snapshots unavailable.",
+  "sha256": {
+    "history.json": "03e1c6515778192d2cc7d663e0f92b262648b002681c6b1f3e69642ca2ccaafc",
+    "target_qualifying.json": "83dd7a1e30a3d6075ef45793b55f3742b4b7b134135309c9204070a39d3101c6"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "model": "L2 regularized Plackett-Luce, top-three likelihood",
+  "features": [
+    "qualifying_quality",
+    "driver_last3_finish_quality",
+    "driver_prior_podium_rate",
+    "team_last3_races_finish_quality"
+  ],
+  "coefficients": [
+    4.158766564561136,
+    0.011401459205864417,
+    1.571790991992142,
+    0.9467390242435475
+  ],
+  "l2": 0.03,
+  "training_rounds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+  ],
+  "training_races": 12,
+  "training_driver_rows": 264,
+  "sha256": {
+    "history.json": "d87a34a929e2df53c5ac87a6212d0d57b3dc25d4ca55cefdf875eaecfbcb718a",
+    "provenance.json": "1756e6a4ba2230236edbf5401553a8e86b0007c454e9dfb09f62bd44d6dcb21a",
+    "target_qualifying.json": "48257df8aed561fb4e225ad7525263268409acbb293dd3b1f1d37f6b2950bfe5"
+  }
+}

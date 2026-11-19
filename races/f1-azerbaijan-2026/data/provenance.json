@@ -1,0 +1,17 @@
+{
+  "event": "Azerbaijan Grand Prix, Baku",
+  "cutoff": "End of qualifying, 25 September 2026",
+  "requested_urls": [
+    "https://www.formula1.com/en/results/2026/races/1294/spain/race-result",
+    "https://www.formula1.com/en/results/2026/races/1295/azerbaijan/qualifying"
+  ],
+  "target_race_result_requested": false,
+  "historical_sources": "Prior Spanish-project snapshots through Italy; official Spanish race classification for round 14.",
+  "missing_target_qualifying_drivers": [],
+  "historical_nc_handling": "Official classification table order for trailing NC ranks, consistent with the existing preprocessing rule.",
+  "snapshot_limitation": "Retrospective qualifying classifications; exact as-of publication snapshots unavailable.",
+  "sha256": {
+    "history.json": "e3209c0bd99c2c4c83e36922884ab32579c81844e4c0fa93b99a56a69b6e2f54",
+    "target_qualifying.json": "a40cc1e2d579b6a264bf3706866080153663da571248d5943be943505b2efa1c"
+  }
+}

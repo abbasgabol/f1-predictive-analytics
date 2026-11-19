@@ -1,0 +1,30 @@
+{
+  "cutoff": "End of Italian GP qualifying, 5 September 2026",
+  "target_source": "https://www.formula1.com/en/results/2026/races/1293/italy/qualifying",
+  "historical_sources": [
+    "../f1-dutch-2026/data/history.json",
+    "../f1-dutch-2026/data/target_qualifying.json",
+    "../f1_2026_final_dataset.xlsx (round 12 only)"
+  ],
+  "training_rounds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+  ],
+  "target_race_outcomes_in_model_data": false,
+  "disclosure": "A web qualifying search incidentally exposed a race-result snippet to the assistant. It is not in the model data. Existing model architecture, features, regularization and evaluation protocol were retained unchanged. This is not claimed to be a fully blind assistant forecast.",
+  "snapshot_limitation": "Retrospective qualifying classifications; exact as-of publication state not certified.",
+  "sha256": {
+    "history.json": "d87a34a929e2df53c5ac87a6212d0d57b3dc25d4ca55cefdf875eaecfbcb718a",
+    "target_qualifying.json": "48257df8aed561fb4e225ad7525263268409acbb293dd3b1f1d37f6b2950bfe5"
+  }
+}

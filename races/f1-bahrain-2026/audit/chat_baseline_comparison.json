@@ -1,0 +1,115 @@
+{
+  "evaluation_only": true,
+  "model_hits": 12,
+  "qualifying_hits": 10,
+  "slots": 15,
+  "history_prefixes_unchanged": true,
+  "races": [
+    {
+      "event": "dutch",
+      "actual_source": "user-supplied after prediction",
+      "actual": [
+        "NOR",
+        "ANT",
+        "RUS"
+      ],
+      "prediction": [
+        "ANT",
+        "RUS",
+        "NOR"
+      ],
+      "qualifying_top3": [
+        "NOR",
+        "RUS",
+        "ANT"
+      ],
+      "model_hits": 3,
+      "qualifying_hits": 3
+    },
+    {
+      "event": "italy",
+      "actual_source": "user-supplied after prediction",
+      "actual": [
+        "ANT",
+        "RUS",
+        "VER"
+      ],
+      "prediction": [
+        "RUS",
+        "ANT",
+        "LEC"
+      ],
+      "qualifying_top3": [
+        "GAS",
+        "RUS",
+        "PIA"
+      ],
+      "model_hits": 2,
+      "qualifying_hits": 1
+    },
+    {
+      "event": "spain",
+      "actual_source": "user-supplied after prediction",
+      "actual": [
+        "ANT",
+        "VER",
+        "NOR"
+      ],
+      "prediction": [
+        "ANT",
+        "NOR",
+        "VER"
+      ],
+      "qualifying_top3": [
+        "NOR",
+        "ANT",
+        "VER"
+      ],
+      "model_hits": 3,
+      "qualifying_hits": 3
+    },
+    {
+      "event": "azerbaijan",
+      "actual_source": "user-supplied after prediction",
+      "actual": [
+        "RUS",
+        "VER",
+        "HAD"
+      ],
+      "prediction": [
+        "RUS",
+        "LEC",
+        "NOR"
+      ],
+      "qualifying_top3": [
+        "RUS",
+        "LEC",
+        "PIA"
+      ],
+      "model_hits": 1,
+      "qualifying_hits": 1
+    },
+    {
+      "event": "bahrain",
+      "actual_source": "user-supplied after prediction",
+      "actual": [
+        "VER",
+        "ANT",
+        "HAM"
+      ],
+      "prediction": [
+        "ANT",
+        "VER",
+        "HAM"
+      ],
+      "qualifying_top3": [
+        "VER",
+        "HAM",
+        "HAD"
+      ],
+      "model_hits": 3,
+      "qualifying_hits": 2
+    }
+  ],
+  "caveat": "Five previously discussed races, not an independent benchmark; Italy had incidental assistant search exposure. These actuals are used for evaluation only."
+}

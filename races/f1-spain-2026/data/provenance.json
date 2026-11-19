@@ -1,0 +1,22 @@
+{
+  "cutoff": "End of Spanish Grand Prix qualifying, 12 September 2026",
+  "event": "Spanish Grand Prix at Madring, Madrid; not the earlier Barcelona-Catalunya GP",
+  "requested_urls": [
+    "https://www.formula1.com/en/results/2026/races/1293/italy/race-result",
+    "https://www.formula1.com/en/results/2026/races/1294/spain/practice/3",
+    "https://www.formula1.com/en/results/2026/races/1294/spain/qualifying"
+  ],
+  "target_race_result_requested": false,
+  "missing_qualifying_drivers": [
+    "BEA",
+    "STR"
+  ],
+  "missing_qualifying_handling": "Entrants confirmed in practice 3 receive tied qualifying rank 22, consistent with the historical preprocessing rule.",
+  "historical_labels": "Prior local snapshots through Netherlands; official Italian GP race classification for round 13.",
+  "historical_nc_handling": "Italian NC entries receive ranks from official table order, consistent with full-field training ranks.",
+  "snapshot_limitation": "Retrospective classifications, not archived as-of publication snapshots.",
+  "sha256": {
+    "history.json": "c7cead4820e5f54eaab2dd5586786db3344bd9bad632d1bf4161797efc8a6af6",
+    "target_qualifying.json": "b864880e49f5a0a158e4943907f82350f9eb98c765766fe939f5efdf98927f75"
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "cutoff": "End of Dutch GP qualifying, 22 August 2026",
+  "historical_labels": "G:/f1_2026_final_dataset.xlsx, Full Dataset, rounds 1-11 only; not independently fully verified",
+  "target_outcomes_in_export": false,
+  "sources": [
+    {
+      "round": 1,
+      "url": "https://www.formula1.com/en/results/2026/races/1279/australia/qualifying",
+      "session": "qualifying"
+    },
+    {
+      "round": 2,
+      "url": "https://www.formula1.com/en/results/2026/races/1280/china/qualifying",
+      "session": "qualifying"
+    },
+    {
+      "round": 3,
+      "url": "https://www.formula1.com/en/results/2026/races/1281/japan/qualifying",
+      "session": "qualifying"
+    },
+    {
+      "round": 4,
+      "url": "https://www.formula1.com/en/results/2026/races/1284/miami/qualifying",
+      "session": "qualifying"
+    },
+    {
+      "round": 5,
+      "url": "https://www.formula1.com/en/results/2026/races/1285/canada/qualifying",
+      "session": "qualifying"
+    },
+    {
+      "round": 6,
+      "url": "https://www.formula1.com/en/results/2026/races/1286/monaco/qualifying",
+      "session": "qualifying"
+    },
+    {
+      "round": 7,
+      "url": "https://www.formula1.com/en/results/2026/races/1287/barcelona-catalunya/qualifying",
+      "session": "qualifying"
+    },
+    {
+      "round": 8,
+      "url": "https://www.formula1.com/en/results/2026/races/1288/austria/qualifying",
+      "session": "qualifying"
+    },
+    {
+      "round": 9,
+      "url": "https://www.formula1.com/en/results/2026/races/1289/great-britain/qualifying",
+      "session": "qualifying"
+    },
+    {
+      "round": 10,
+      "url": "https://www.formula1.com/en/results/2026/races/1290/belgium/qualifying",
+      "session": "qualifying"
+    },
+    {
+      "round": 11,
+      "url": "https://www.formula1.com/en/results/2026/races/1291/hungary/qualifying",
+      "session": "qualifying"
+    },
+    {
+      "round": 12,
+      "url": "https://www.formula1.com/en/results/2026/races/1292/netherlands/qualifying",
+      "session": "qualifying"
+    }
+  ],
+  "sha256": {
+    "history.json": "b214c87684908eb9dbdb55b821d827dbfe07eab8e313ee1701ac1e7a96f7e271",
+    "target_qualifying.json": "21ddd968216e4383b31079dc15b5a51a1162390caa6b00da1df00d65ff8d81e6"
+  }
+}

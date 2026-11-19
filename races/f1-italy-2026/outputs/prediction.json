@@ -1,0 +1,622 @@
+{
+  "cutoff": "End of qualifying on 5 September 2026",
+  "prediction": [
+    {
+      "position": 1,
+      "driver": "RUS",
+      "name": "George Russell"
+    },
+    {
+      "position": 2,
+      "driver": "ANT",
+      "name": "Kimi Antonelli"
+    },
+    {
+      "position": 3,
+      "driver": "LEC",
+      "name": "Charles Leclerc"
+    }
+  ],
+  "ordered_podium_probability": 0.005676966835318922,
+  "probability_warning": "Model-implied probabilities, not externally calibrated; only 12 training races.",
+  "field": [
+    {
+      "driver": "RUS",
+      "name": "George Russell",
+      "team": "Mercedes",
+      "qualifying_position": 2,
+      "p1": 0.2007048792518259,
+      "p2": 0.17695001400678798,
+      "p3": 0.15312897353840144,
+      "podium": 0.5307838667970153,
+      "features": {
+        "qualifying_quality": 0.9545454545454546,
+        "driver_last3_finish_quality": 0.5606060606060606,
+        "driver_prior_podium_rate": 0.44805194805194803,
+        "team_last3_races_finish_quality": 0.7575757575757575
+      }
+    },
+    {
+      "driver": "ANT",
+      "name": "Kimi Antonelli",
+      "team": "Mercedes",
+      "qualifying_position": 7,
+      "p1": 0.13734647627026414,
+      "p2": 0.13371108055067135,
+      "p3": 0.1284840512063356,
+      "podium": 0.39954160802727107,
+      "features": {
+        "qualifying_quality": 0.7272727272727273,
+        "driver_last3_finish_quality": 0.9545454545454546,
+        "driver_prior_podium_rate": 0.8051948051948052,
+        "team_last3_races_finish_quality": 0.7575757575757575
+      }
+    },
+    {
+      "driver": "LEC",
+      "name": "Charles Leclerc",
+      "team": "Ferrari",
+      "qualifying_position": 4,
+      "p1": 0.1089613220059593,
+      "p2": 0.1101009941136505,
+      "p3": 0.1105345024232455,
+      "podium": 0.3295968185428553,
+      "features": {
+        "qualifying_quality": 0.8636363636363636,
+        "driver_last3_finish_quality": 0.8787878787878789,
+        "driver_prior_podium_rate": 0.23376623376623376,
+        "team_last3_races_finish_quality": 0.8636363636363638
+      }
+    },
+    {
+      "driver": "GAS",
+      "name": "Pierre Gasly",
+      "team": "Alpine",
+      "qualifying_position": 1,
+      "p1": 0.10836300126834475,
+      "p2": 0.10957802285821738,
+      "p3": 0.11010672792230392,
+      "podium": 0.32804775204886605,
+      "features": {
+        "qualifying_quality": 1.0,
+        "driver_last3_finish_quality": 0.5454545454545454,
+        "driver_prior_podium_rate": 0.09090909090909091,
+        "team_last3_races_finish_quality": 0.5
+      }
+    },
+    {
+      "driver": "PIA",
+      "name": "Oscar Piastri",
+      "team": "McLaren",
+      "qualifying_position": 3,
+      "p1": 0.10453749396482549,
+      "p2": 0.10621049270973666,
+      "p3": 0.10732326280598657,
+      "podium": 0.3180712494805487,
+      "features": {
+        "qualifying_quality": 0.9090909090909091,
+        "driver_last3_finish_quality": 0.5757575757575758,
+        "driver_prior_podium_rate": 0.1623376623376623,
+        "team_last3_races_finish_quality": 0.7424242424242423
+      }
+    },
+    {
+      "driver": "HAM",
+      "name": "Lewis Hamilton",
+      "team": "Ferrari",
+      "qualifying_position": 5,
+      "p1": 0.10087513025187908,
+      "p2": 0.10294837505263706,
+      "p3": 0.10458013378789142,
+      "podium": 0.3084036390924076,
+      "features": {
+        "qualifying_quality": 0.8181818181818182,
+        "driver_last3_finish_quality": 0.8484848484848485,
+        "driver_prior_podium_rate": 0.3051948051948052,
+        "team_last3_races_finish_quality": 0.8636363636363638
+      }
+    },
+    {
+      "driver": "VER",
+      "name": "Max Verstappen",
+      "team": "Red Bull Racing",
+      "qualifying_position": 6,
+      "p1": 0.0795917966507239,
+      "p2": 0.08327456501260312,
+      "p3": 0.08712860157977412,
+      "podium": 0.24999496324310114,
+      "features": {
+        "qualifying_quality": 0.7727272727272727,
+        "driver_last3_finish_quality": 0.6363636363636364,
+        "driver_prior_podium_rate": 0.3766233766233766,
+        "team_last3_races_finish_quality": 0.6969696969696969
+      }
+    },
+    {
+      "driver": "NOR",
+      "name": "Lando Norris",
+      "team": "McLaren",
+      "qualifying_position": 9,
+      "p1": 0.0422531452407275,
+      "p2": 0.04599795358470896,
+      "p3": 0.05041650725514082,
+      "podium": 0.1386676060805773,
+      "features": {
+        "qualifying_quality": 0.6363636363636364,
+        "driver_last3_finish_quality": 0.9090909090909092,
+        "driver_prior_podium_rate": 0.3051948051948052,
+        "team_last3_races_finish_quality": 0.7424242424242423
+      }
+    },
+    {
+      "driver": "COL",
+      "name": "Franco Colapinto",
+      "team": "Alpine",
+      "qualifying_position": 8,
+      "p1": 0.02576290136934918,
+      "p2": 0.028501522938230075,
+      "p3": 0.03182236722936863,
+      "podium": 0.0860867915369479,
+      "features": {
+        "qualifying_quality": 0.6818181818181818,
+        "driver_last3_finish_quality": 0.4545454545454546,
+        "driver_prior_podium_rate": 0.01948051948051948,
+        "team_last3_races_finish_quality": 0.5
+      }
+    },
+    {
+      "driver": "LIN",
+      "name": "Arvid Lindblad",
+      "team": "Racing Bulls",
+      "qualifying_position": 10,
+      "p1": 0.018991100722436,
+      "p2": 0.02114443349181994,
+      "p3": 0.023779947657625363,
+      "podium": 0.0639154818718813,
+      "features": {
+        "qualifying_quality": 0.5909090909090909,
+        "driver_last3_finish_quality": 0.5757575757575758,
+        "driver_prior_podium_rate": 0.01948051948051948,
+        "team_last3_races_finish_quality": 0.5757575757575757
+      }
+    },
+    {
+      "driver": "BOR",
+      "name": "Gabriel Bortoleto",
+      "team": "Audi",
+      "qualifying_position": 11,
+      "p1": 0.015717313778756285,
+      "p2": 0.01755273239347784,
+      "p3": 0.019808558900287175,
+      "podium": 0.0530786050725213,
+      "features": {
+        "qualifying_quality": 0.5454545454545454,
+        "driver_last3_finish_quality": 0.5606060606060606,
+        "driver_prior_podium_rate": 0.01948051948051948,
+        "team_last3_races_finish_quality": 0.5757575757575757
+      }
+    },
+    {
+      "driver": "HUL",
+      "name": "Nico Hulkenberg",
+      "team": "Audi",
+      "qualifying_position": 13,
+      "p1": 0.010772953679969582,
+      "p2": 0.012085690683908329,
+      "p3": 0.013708782990641093,
+      "podium": 0.036567427354519004,
+      "features": {
+        "qualifying_quality": 0.45454545454545453,
+        "driver_last3_finish_quality": 0.5909090909090908,
+        "driver_prior_podium_rate": 0.01948051948051948,
+        "team_last3_races_finish_quality": 0.5757575757575757
+      }
+    },
+    {
+      "driver": "LAW",
+      "name": "Liam Lawson",
+      "team": "Red Bull Racing",
+      "qualifying_position": 14,
+      "p1": 0.010006935012937479,
+      "p2": 0.011234156208022079,
+      "p3": 0.012752868381079873,
+      "podium": 0.033993959602039436,
+      "features": {
+        "qualifying_quality": 0.4090909090909091,
+        "driver_last3_finish_quality": 0.6363636363636364,
+        "driver_prior_podium_rate": 0.01948051948051948,
+        "team_last3_races_finish_quality": 0.6969696969696969
+      }
+    },
+    {
+      "driver": "BEA",
+      "name": "Oliver Bearman",
+      "team": "Haas F1 Team",
+      "qualifying_position": 12,
+      "p1": 0.009453148760657167,
+      "p2": 0.010617793636684428,
+      "p3": 0.01205998751947219,
+      "podium": 0.03213092991681379,
+      "features": {
+        "qualifying_quality": 0.5,
+        "driver_last3_finish_quality": 0.2272727272727273,
+        "driver_prior_podium_rate": 0.01948051948051948,
+        "team_last3_races_finish_quality": 0.24242424242424243
+      }
+    },
+    {
+      "driver": "TSU",
+      "name": "Yuki Tsunoda",
+      "team": "Racing Bulls",
+      "qualifying_position": 17,
+      "p1": 0.005655632017280833,
+      "p2": 0.006374221670122434,
+      "p3": 0.00726786105058756,
+      "podium": 0.019297714737990825,
+      "features": {
+        "qualifying_quality": 0.2727272727272727,
+        "driver_last3_finish_quality": 0.5454545454545454,
+        "driver_prior_podium_rate": 0.0909090909090909,
+        "team_last3_races_finish_quality": 0.5757575757575757
+      }
+    },
+    {
+      "driver": "SAI",
+      "name": "Carlos Sainz",
+      "team": "Williams",
+      "qualifying_position": 15,
+      "p1": 0.005641444848618765,
+      "p2": 0.006358312865338354,
+      "p3": 0.007249825076031658,
+      "podium": 0.019249582789988777,
+      "features": {
+        "qualifying_quality": 0.36363636363636365,
+        "driver_last3_finish_quality": 0.28787878787878785,
+        "driver_prior_podium_rate": 0.01948051948051948,
+        "team_last3_races_finish_quality": 0.29545454545454547
+      }
+    },
+    {
+      "driver": "OCO",
+      "name": "Esteban Ocon",
+      "team": "Haas F1 Team",
+      "qualifying_position": 16,
+      "p1": 0.004439554402369842,
+      "p2": 0.005009086210836111,
+      "p3": 0.005718294478717649,
+      "podium": 0.015166935091923602,
+      "features": {
+        "qualifying_quality": 0.3181818181818182,
+        "driver_last3_finish_quality": 0.25757575757575757,
+        "driver_prior_podium_rate": 0.01948051948051948,
+        "team_last3_races_finish_quality": 0.24242424242424243
+      }
+    },
+    {
+      "driver": "ALB",
+      "name": "Alexander Albon",
+      "team": "Williams",
+      "qualifying_position": 18,
+      "p1": 0.0032001843879682873,
+      "p2": 0.0036147193064217722,
+      "p3": 0.004131603947178177,
+      "podium": 0.010946507641568237,
+      "features": {
+        "qualifying_quality": 0.22727272727272727,
+        "driver_last3_finish_quality": 0.30303030303030304,
+        "driver_prior_podium_rate": 0.01948051948051948,
+        "team_last3_races_finish_quality": 0.29545454545454547
+      }
+    },
+    {
+      "driver": "BOT",
+      "name": "Valtteri Bottas",
+      "team": "Cadillac",
+      "qualifying_position": 19,
+      "p1": 0.0023581150581791313,
+      "p2": 0.0026655695602463524,
+      "p3": 0.003049277034279766,
+      "podium": 0.00807296165270525,
+      "features": {
+        "qualifying_quality": 0.18181818181818182,
+        "driver_last3_finish_quality": 0.16666666666666666,
+        "driver_prior_podium_rate": 0.01948051948051948,
+        "team_last3_races_finish_quality": 0.17424242424242423
+      }
+    },
+    {
+      "driver": "PER",
+      "name": "Sergio Perez",
+      "team": "Cadillac",
+      "qualifying_position": 20,
+      "p1": 0.0019522850387500145,
+      "p2": 0.0022076225493783516,
+      "p3": 0.002526423112674174,
+      "podium": 0.00668633070080254,
+      "features": {
+        "qualifying_quality": 0.13636363636363635,
+        "driver_last3_finish_quality": 0.1818181818181818,
+        "driver_prior_podium_rate": 0.01948051948051948,
+        "team_last3_races_finish_quality": 0.17424242424242423
+      }
+    },
+    {
+      "driver": "ALO",
+      "name": "Fernando Alonso",
+      "team": "Aston Martin",
+      "qualifying_position": 21,
+      "p1": 0.0018701192611870203,
+      "p2": 0.0021148646364530423,
+      "p3": 0.0024204667205496152,
+      "podium": 0.006405450618189677,
+      "features": {
+        "qualifying_quality": 0.09090909090909091,
+        "driver_last3_finish_quality": 0.4090909090909091,
+        "driver_prior_podium_rate": 0.01948051948051948,
+        "team_last3_races_finish_quality": 0.32575757575757575
+      }
+    },
+    {
+      "driver": "STR",
+      "name": "Lance Stroll",
+      "team": "Aston Martin",
+      "qualifying_position": 22,
+      "p1": 0.00154506675699007,
+      "p2": 0.001747775960047958,
+      "p3": 0.0020009753824276532,
+      "podium": 0.005293818099465681,
+      "features": {
+        "qualifying_quality": 0.045454545454545456,
+        "driver_last3_finish_quality": 0.2424242424242424,
+        "driver_prior_podium_rate": 0.01948051948051948,
+        "team_last3_races_finish_quality": 0.32575757575757575
+      }
+    }
+  ],
+  "validation_summary": {
+    "form_and_qualifying": {
+      "races": 6,
+      "mean_podium_hits": 1.8333333333333333,
+      "winner_correct": 2,
+      "exact_order_correct": 0,
+      "mean_ordered_podium_nll": 5.3770562827672705
+    },
+    "qualifying_only": {
+      "races": 6,
+      "mean_podium_hits": 1.6666666666666667,
+      "winner_correct": 4,
+      "exact_order_correct": 0,
+      "mean_ordered_podium_nll": 5.566339511247382
+    }
+  },
+  "validation": [
+    {
+      "round": 7,
+      "gp": "Barcelona",
+      "method": "form_and_qualifying",
+      "prediction": [
+        "ANT",
+        "HAM",
+        "RUS"
+      ],
+      "actual": [
+        "HAM",
+        "RUS",
+        "NOR"
+      ],
+      "podium_hits": 2,
+      "winner_correct": false,
+      "exact_order": false,
+      "ordered_podium_nll": 5.486884718008199
+    },
+    {
+      "round": 7,
+      "gp": "Barcelona",
+      "method": "qualifying_only",
+      "prediction": [
+        "RUS",
+        "HAM",
+        "ANT"
+      ],
+      "actual": [
+        "HAM",
+        "RUS",
+        "NOR"
+      ],
+      "podium_hits": 2,
+      "winner_correct": false,
+      "exact_order": false,
+      "ordered_podium_nll": 5.004935802485343
+    },
+    {
+      "round": 8,
+      "gp": "Austria",
+      "method": "form_and_qualifying",
+      "prediction": [
+        "RUS",
+        "HAM",
+        "LEC"
+      ],
+      "actual": [
+        "RUS",
+        "VER",
+        "ANT"
+      ],
+      "podium_hits": 1,
+      "winner_correct": true,
+      "exact_order": false,
+      "ordered_podium_nll": 5.628690844967478
+    },
+    {
+      "round": 8,
+      "gp": "Austria",
+      "method": "qualifying_only",
+      "prediction": [
+        "RUS",
+        "LEC",
+        "HAM"
+      ],
+      "actual": [
+        "RUS",
+        "VER",
+        "ANT"
+      ],
+      "podium_hits": 1,
+      "winner_correct": true,
+      "exact_order": false,
+      "ordered_podium_nll": 5.731240887827927
+    },
+    {
+      "round": 9,
+      "gp": "Great Britain",
+      "method": "form_and_qualifying",
+      "prediction": [
+        "ANT",
+        "HAM",
+        "LEC"
+      ],
+      "actual": [
+        "RUS",
+        "VER",
+        "ANT"
+      ],
+      "podium_hits": 1,
+      "winner_correct": false,
+      "exact_order": false,
+      "ordered_podium_nll": 6.042181076442242
+    },
+    {
+      "round": 9,
+      "gp": "Great Britain",
+      "method": "qualifying_only",
+      "prediction": [
+        "ANT",
+        "LEC",
+        "HAM"
+      ],
+      "actual": [
+        "RUS",
+        "VER",
+        "ANT"
+      ],
+      "podium_hits": 1,
+      "winner_correct": false,
+      "exact_order": false,
+      "ordered_podium_nll": 6.510857612091314
+    },
+    {
+      "round": 10,
+      "gp": "Belgium",
+      "method": "form_and_qualifying",
+      "prediction": [
+        "ANT",
+        "VER",
+        "RUS"
+      ],
+      "actual": [
+        "ANT",
+        "LEC",
+        "VER"
+      ],
+      "podium_hits": 2,
+      "winner_correct": true,
+      "exact_order": false,
+      "ordered_podium_nll": 5.008874511521464
+    },
+    {
+      "round": 10,
+      "gp": "Belgium",
+      "method": "qualifying_only",
+      "prediction": [
+        "ANT",
+        "VER",
+        "NOR"
+      ],
+      "actual": [
+        "ANT",
+        "LEC",
+        "VER"
+      ],
+      "podium_hits": 2,
+      "winner_correct": true,
+      "exact_order": false,
+      "ordered_podium_nll": 5.328589865122797
+    },
+    {
+      "round": 11,
+      "gp": "Hungary",
+      "method": "form_and_qualifying",
+      "prediction": [
+        "ANT",
+        "HAM",
+        "NOR"
+      ],
+      "actual": [
+        "NOR",
+        "VER",
+        "ANT"
+      ],
+      "podium_hits": 2,
+      "winner_correct": false,
+      "exact_order": false,
+      "ordered_podium_nll": 5.595324618710741
+    },
+    {
+      "round": 11,
+      "gp": "Hungary",
+      "method": "qualifying_only",
+      "prediction": [
+        "NOR",
+        "HAM",
+        "LEC"
+      ],
+      "actual": [
+        "NOR",
+        "VER",
+        "ANT"
+      ],
+      "podium_hits": 1,
+      "winner_correct": true,
+      "exact_order": false,
+      "ordered_podium_nll": 6.021759592617753
+    },
+    {
+      "round": 12,
+      "gp": "Netherlands",
+      "method": "form_and_qualifying",
+      "prediction": [
+        "ANT",
+        "RUS",
+        "NOR"
+      ],
+      "actual": [
+        "NOR",
+        "ANT",
+        "RUS"
+      ],
+      "podium_hits": 3,
+      "winner_correct": false,
+      "exact_order": false,
+      "ordered_podium_nll": 4.500381926953502
+    },
+    {
+      "round": 12,
+      "gp": "Netherlands",
+      "method": "qualifying_only",
+      "prediction": [
+        "NOR",
+        "RUS",
+        "ANT"
+      ],
+      "actual": [
+        "NOR",
+        "ANT",
+        "RUS"
+      ],
+      "podium_hits": 3,
+      "winner_correct": true,
+      "exact_order": false,
+      "ordered_podium_nll": 4.8006533073391635
+    }
+  ]
+}

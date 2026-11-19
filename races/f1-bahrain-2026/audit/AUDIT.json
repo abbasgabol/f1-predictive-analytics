@@ -1,0 +1,94 @@
+{
+  "conclusion": "No evidence of target-result leakage in the saved Bahrain modeling pipeline under these tests.",
+  "checks": [
+    {
+      "check": "Training cutoff and target field allowlist",
+      "status": "PASS",
+      "detail": "330 rows from rounds 1\u201315; 22 Bahrain qualifying rows, no target outcome fields."
+    },
+    {
+      "check": "Frozen input and implementation hashes",
+      "status": "PASS",
+      "detail": "Every recorded data/code SHA-256 matches the original forecast artifact."
+    },
+    {
+      "check": "Independent feature reconstruction",
+      "status": "PASS",
+      "detail": "All 352 driver rows agree with independently calculated strictly-prior-race features."
+    },
+    {
+      "check": "Every-race future-label poisoning",
+      "status": "PASS",
+      "detail": "Changing current/future outcomes cannot change the features for any of rounds 1\u201315."
+    },
+    {
+      "check": "Target contamination rejected",
+      "status": "PASS",
+      "detail": "Six prohibited field types and Bahrain rows injected into training are rejected by production validation."
+    },
+    {
+      "check": "Row-order and identity controls",
+      "status": "PASS",
+      "detail": "Training-row shuffling and consistent driver/team anonymization preserve fitted coefficients and target features."
+    },
+    {
+      "check": "Offline clean-room production replay",
+      "status": "PASS",
+      "detail": "Entire prediction JSON reproduced exactly, including selection, probabilities and validation; original project/workbooks and network access blocked."
+    },
+    {
+      "check": "Random-label negative control completed",
+      "status": "PASS",
+      "detail": "Real labels: 1.889/3 mean hits; shuffled labels: 0.430/3. See caveats; this is supporting evidence, not proof."
+    }
+  ],
+  "negative_control": {
+    "protocol": "30 within-race label permutations; fixed original four-feature model, chronological held-outs 7\u201315; form recomputed. Descriptive control, not a calibrated significance test.",
+    "real_labels_mean_hits": 1.8888888888888888,
+    "shuffled_mean_hits": 0.4296296296296296,
+    "shuffled_min": 0.1111111111111111,
+    "shuffled_max": 0.8888888888888888,
+    "uniform_random_expected_hits": 0.4090909090909091,
+    "all_shuffled_means": [
+      0.4444444444444444,
+      0.4444444444444444,
+      0.3333333333333333,
+      0.2222222222222222,
+      0.4444444444444444,
+      0.4444444444444444,
+      0.5555555555555556,
+      0.3333333333333333,
+      0.8888888888888888,
+      0.5555555555555556,
+      0.3333333333333333,
+      0.1111111111111111,
+      0.5555555555555556,
+      0.3333333333333333,
+      0.4444444444444444,
+      0.2222222222222222,
+      0.5555555555555556,
+      0.2222222222222222,
+      0.4444444444444444,
+      0.2222222222222222,
+      0.5555555555555556,
+      0.2222222222222222,
+      0.6666666666666666,
+      0.6666666666666666,
+      0.3333333333333333,
+      0.5555555555555556,
+      0.2222222222222222,
+      0.8888888888888888,
+      0.2222222222222222,
+      0.4444444444444444
+    ]
+  },
+  "cleanroom_directory": "G:\\f1-cleanroom-dtb7na46",
+  "original_files_unchanged": true,
+  "limitations": [
+    "Cannot certify upstream workbook labels or the exact historical publication state of qualifying pages.",
+    "Hashes demonstrate consistency with saved artifacts, not independently timestamped provenance.",
+    "Italian forecast had incidental assistant search exposure; code audit cannot make the full conversation blind.",
+    "Repeated model development on known history and a small sample limit claims about generalization.",
+    "No Bahrain actual outcome is used in these tests or model fitting."
+  ]
+}

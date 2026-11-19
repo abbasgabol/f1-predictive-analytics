@@ -1,0 +1,32 @@
+# Local environments and installed packages
+.venv/
+venv/
+.deps/
+node_modules/
+
+# Python caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Temporary verification and clean-room replays
+.verification/
+f1-cleanroom-*/
+
+# Local credentials and editor settings
+.env
+.env.*
+!.env.example
+.vscode/
+.idea/
+
+# Machine-specific and duplicate distribution files
+.DS_Store
+Thumbs.db
+desktop.ini
+*.zip
+
+# Optional original workbook (not required for offline predictions)
+*.xlsx
