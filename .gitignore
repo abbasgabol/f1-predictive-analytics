@@ -13,6 +13,7 @@ htmlcov/
 
 # Temporary verification and clean-room replays
 .verification/
+.runs/
 f1-cleanroom-*/
 
 # Local credentials and editor settings

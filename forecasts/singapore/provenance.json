@@ -1,0 +1,20 @@
+{
+  "event": "Singapore Grand Prix, Marina Bay",
+  "cutoff": "End of qualifying, 10 October 2026",
+  "requested_urls": [
+    "https://www.formula1.com/en/results/2026/races/1296/singapore/qualifying",
+    "https://www.formula1.com/en/results/2026/races/1308/bahrain/race-result"
+  ],
+  "target_race_result_requested": false,
+  "historical_sources": "Prior Bahrain-project snapshots through Azerbaijan; official Bahrain race classification for round 16.",
+  "unclassified_qualifying_drivers": [
+    "HAD"
+  ],
+  "unclassified_handling": "Hadjar is listed RT with no qualifying time. Rank 22 is imputed using the existing rule; this is not a final starting-grid position.",
+  "historical_nc_handling": "Official classification table order for trailing NC ranks, consistent with the existing preprocessing rule.",
+  "snapshot_limitation": "Retrospective qualifying classifications; exact as-of publication snapshots unavailable.",
+  "sha256": {
+    "history.json": "5655702bcdcde4ba89f97d3c30c49ab53a5d0f477f1f3315383fe3abf6760b67",
+    "target_qualifying.json": "70fb5ff07748af0d2703375bc014a7b34ae1ea7dc1a65e445fe42a931c3d3792"
+  }
+}

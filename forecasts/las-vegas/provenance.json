@@ -1,0 +1,22 @@
+{
+  "event": "Las Vegas",
+  "cutoff": "End of qualifying, 20 November 2026 Las Vegas time (21 November in Pakistan)",
+  "requested_urls": [
+    "https://www.formula1.com/en/results/2026/races/1299/brazil/race-result",
+    "https://www.formula1.com/en/results/2026/races/1300/las-vegas/qualifying"
+  ],
+  "target_race_result_requested": false,
+  "prior_prediction_sha256_before_fetch": "157003e2db3b6ba5335db3737f598ab33804040a951bf7fd38903e0e464ad103",
+  "prior_prediction_frozen_at": "2026-11-21T19:16:25.595251+00:00",
+  "prepared_at_utc": "2026-11-21T19:19:30.870524+00:00",
+  "imputed_qualifying_drivers": [
+    "BEA"
+  ],
+  "imputation": "Rank 22 for unclassified/missing qualifiers; not final grid.",
+  "historical_labels": "Previous snapshots plus preceding race classification; trailing NC ranks follow table order.",
+  "snapshot_limitation": "Retrospective source tables; no independently timestamped as-of snapshot.",
+  "sha256": {
+    "history.json": "a0730446bd684e56b698d9bdbab255eedc1f03256f66897b791b266307708796",
+    "target_qualifying.json": "f831f0dd88cd4142da9fad6c539d74d5ab1ae52da1e4d654035097ef4b14f470"
+  }
+}

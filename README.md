@@ -1,135 +1,153 @@
-# F1 podium predictor — 2026
+# F1 Predictive Analytics
 
-Five reproducible race forecasts in one project. Each race uses only earlier race
-results and its own qualifying inputs. Start with a race-named Python file, or use
-the shared runner. Saved inputs make prediction fully offline.
+[![Reproducibility checks](https://github.com/abbasgabol/f1-predictive-analytics/actions/workflows/tests.yml/badge.svg)](https://github.com/abbasgabol/f1-predictive-analytics/actions/workflows/tests.yml)
 
-## Folder layout
+**Predicting the podium using information available through qualifying.** A compact machine learning project with ten saved 2026 Grand Prix forecasts, chronological model selection, and reproducible checks for target leakage.
+
+The model combines qualifying position with earlier driver and team form. A shared Python pipeline recreates the original forecasts from local snapshots, without fetching race results or requiring an internet connection.
+
+## Interactive dashboard
+
+**[Open Grid Forecast](https://grid-forecast-f1.vercel.app/)**
+
+Grid Forecast compares saved podium predictions against recorded race classifications, with a qualifying baseline and separate counts for podium membership, winners, and exact orders. Choose a race to see the full grid probabilities. The dashboard has no live data dependency.
+
+Run `python -m http.server 8000 --directory website` and open [localhost:8000](http://localhost:8000). Regenerate the dashboard dataset with `python scripts/export_site.py` after updating the archived inputs.
+
+## What this project demonstrates
+
+| Area | Implementation |
+| --- | --- |
+| Statistical modeling | Regularized Plackett–Luce ranking with an analytic gradient and probabilistic podium estimates |
+| Feature engineering | Lagged driver form, smoothed podium rate, and team form computed strictly from earlier rounds |
+| Model evaluation | Expanding-window validation by whole race; nested selection across six small candidate models |
+| Data engineering | Deduplicated event snapshots, validated joins, field allowlists, and recorded input hashes |
+| Performance | Precomputed historical features, dataset-scoped fit caches, and vectorized exact podium probabilities |
+| Reproducibility | Frozen forecasts, automated regression and leakage checks, and GitHub Actions |
+
+**Stack:** Python 3.10+, NumPy, SciPy, `unittest`, GitHub Actions.
+
+## Run a forecast
+
+```bash
+git clone https://github.com/abbasgabol/f1-predictive-analytics.git
+cd f1-predictive-analytics
+python -m venv .venv
+```
+
+Activate the environment:
+
+```powershell
+# Windows PowerShell
+.\.venv\Scripts\Activate.ps1
+```
+
+```bash
+# macOS / Linux
+source .venv/bin/activate
+```
+
+Then install the two runtime dependencies and run:
+
+```bash
+python -m pip install -r requirements.txt
+python -m f1predictor list
+python -m f1predictor predict las-vegas --output .runs/las-vegas.json
+```
+
+The saved Las Vegas forecast predicts **Kimi Antonelli → Max Verstappen → George Russell**. This is a model prediction, not a statement of the race result. Its selected model is `form_l2_0.03`, fitted on 20 earlier races.
+
+Available race names: `dutch`, `italy`, `spain`, `azerbaijan`, `bahrain`, `singapore`, `united-states`, `mexico`, `brazil`, `las-vegas`.
+
+Fresh output belongs in `.runs/` or another separate folder. The CLI protects the checked-in data and original forecast folders from output overwrites.
+
+## How it works
+
+```mermaid
+flowchart LR
+    A[Earlier race results] --> C[Cutoff-aware loader]
+    B[Target qualifying] --> C
+    C --> D[Lagged features]
+    D --> E[Chronological model selection]
+    E --> F[Regularized ranking model]
+    F --> G[Podium and probabilities]
+```
+
+Each driver receives a score from four numerical features: qualifying quality, recent finishing form, prior podium rate, and recent team form. The ranking model converts those scores into probabilities for every possible ordered podium. With 22 entrants, it evaluates all **9,240** distinct three-driver combinations.
+
+The Dutch and Italian snapshots retain the original fixed model. Later snapshots select between qualifying-only and four-feature models, each with three regularization strengths. Selection uses earlier races only and a one-standard-error heuristic favoring simpler models. The [methodology](docs/methodology.md) describes the equations and validation boundaries.
+
+## Measured performance
+
+The [frozen Las Vegas report](forecasts/las-vegas/REPORT.md) records these retrospective chronological checks. Each test fits on earlier rounds and evaluates the next race; model selection is repeated inside each training window.
+
+| Measure | Recorded result |
+| --- | ---: |
+| Earlier races available for final fitting | 20 races / 440 driver entries |
+| Outer validation races | 14, rounds 7–20 |
+| Mean correctly identified podium drivers, ignoring order | 1.93 out of 3 |
+| Correct race winners | 8 out of 14 |
+| Exact ordered podiums | 0 out of 14 |
+| Mean ordered-podium negative log-likelihood ↓ | 5.420 |
+
+These are **retrospective development checks**, not a new untouched benchmark or a claim of future accuracy. The dataset is small, and probabilities have not been calibrated. Correctly naming three podium drivers on one occasion does not establish generalization or prove absence of leakage. The goal is credible performance on future races; test scores need not exceed training scores.
+
+## Check reproducibility and leakage safeguards
+
+```bash
+# Unit tests, including temporal boundaries and probability calculations
+python -m unittest discover -s tests -v
+
+# Check recorded data and frozen-artifact hashes
+python -m f1predictor verify
+
+# Recompute all ten forecasts and their historical backtests
+python -m f1predictor verify --replay
+
+# Or inspect one race
+python -m f1predictor verify --replay --race las-vegas
+python -m f1predictor backtest las-vegas
+```
+
+- The prediction loader opens only earlier results and the target qualifying file. It does not open the target result file, even when that file is present for a later forecast's history.
+- Feature construction enforces `historical_round < prediction_round`, including for training examples.
+- Target inputs accept only qualifying fields; unexpected fields and incomplete or mismatched entrants fail validation.
+- Tests exercise future-label poisoning, identity anonymization, independent probability calculations, numerical gradients, cache isolation, and reproduction of saved forecasts.
+- Hash checks detect changes relative to the recorded snapshots. They do not independently certify when the source information became available.
+
+Earlier investigations are preserved in [docs/audits](docs/audits). Their file paths and claims describe the implementation at the time of those investigations.
+
+## Repository layout
 
 ```text
-f1-podium-predictor/
-├── dutch_grand_prix.py
-├── italian_grand_prix.py
-├── spanish_grand_prix.py
-├── azerbaijan_grand_prix.py
-├── bahrain_grand_prix.py
-├── run.py
-├── verify.py
-├── requirements.txt
-├── snapshot_manifest.json
-└── races/
-    ├── f1-dutch-2026/
-    ├── f1-italy-2026/
-    ├── f1-spain-2026/
-    ├── f1-azerbaijan-2026/
-    └── f1-bahrain-2026/
+f1predictor/          Shared loader, features, ranking, validation, and CLI
+data/
+  catalog.json       Race names, cutoffs, selection policy, and input hashes
+  manifest.json      Checksums for data and frozen artifacts
+  events/01...21/    Qualifying snapshots; earlier race classifications
+forecasts/
+  <race-name>/       Original prediction, model, report, and provenance
+docs/
+  methodology.md     Model design and evaluation
+  data-card.md       Data origin, processing, and limitations
+  audits/            Preserved earlier investigations
+  benchmark.json     Recorded local runtime comparison
+tests/               Behavioral, leakage, and regression checks
+.github/workflows/   Automated reproducibility checks
 ```
 
-Each race folder contains its original source code, tests, `data/`, and `outputs/`.
-The Dutch post-race evaluation, Italian generalization experiments, and Bahrain
-leakage audit are retained in their respective race folders. Race-specific files
-were copied byte-for-byte so their original hashes and audit history remain valid.
+Each race keeps its own named forecast folder while sharing one implementation and one event store. Original forecast artifacts are retained; new runs are written separately.
 
-## Setup
+## Optimization with reproducibility
 
-Python 3.10 or newer. In this folder:
+Historical feature matrices are computed once per training snapshot. Repeated fits and validation scores are cached within that snapshot and cutoff, and all ordered podium probabilities are computed with NumPy arrays. Regression checks compare the refactored coefficients, probabilities, podiums, and backtests with the frozen originals.
 
-```powershell
-python -m venv .venv
-.venv/Scripts/python -m pip install -r requirements.txt
-.venv/Scripts/python bahrain_grand_prix.py
-```
+A [recorded local comparison](docs/benchmark.json) measured **10.682 s → 7.242 s**, or **1.48× faster**, for the Las Vegas fit, selection, and backtest. This was one cold-process run per implementation on one machine; the new run also verified frozen artifacts. It is an indicative measurement, not a portable performance guarantee.
 
-On macOS/Linux use `.venv/bin/python` instead of `.venv/Scripts/python`.
-With dependencies already installed, `python bahrain_grand_prix.py` is sufficient.
-No packages from the original machine's project folders are required.
+## Data transparency
 
-## Run and test
+The snapshots combine a user-provided historical workbook and subsequently collected classifications; source references and processing notes remain with each forecast. Retrospectively retrieved pages may contain later corrections, so these are not independently certified snapshots of what was published at qualifying time.
 
-```powershell
-python dutch_grand_prix.py
-python italian_grand_prix.py
-python spanish_grand_prix.py
-python azerbaijan_grand_prix.py
-python bahrain_grand_prix.py
+The Italian forecast's provenance also records that a search incidentally exposed a race-result snippet to the assistant. That result was excluded from the model inputs, but the forecast is not claimed to have been fully blind.
 
-# Equivalent shared runner:
-python run.py bahrain
-python run.py all
-
-# All existing leakage and model-selection tests:
-python run.py all --test
-
-# Check preserved snapshot hashes:
-python verify.py
-
-# Reproduce every forecast in an isolated copy, with network disabled:
-python verify.py --replay
-```
-
-Normal prediction runs regenerate that race's `outputs/` using the saved inputs.
-Verification runs in ignored `.verification/` copies and leaves recorded forecasts
-unchanged. It compares the complete prediction JSON, not only the podium names.
-Use the pinned NumPy/SciPy versions in `requirements.txt` for reproducibility;
-different platforms can still introduce small floating-point differences.
-
-## Saved forecasts
-
-| Race | Predicted P1 | Predicted P2 | Predicted P3 | Report |
-|---|---|---|---|---|
-| Dutch | Kimi Antonelli | George Russell | Lando Norris | [Report](races/f1-dutch-2026/outputs/REPORT.md) |
-| Italian | George Russell | Kimi Antonelli | Charles Leclerc | [Report](races/f1-italy-2026/outputs/REPORT.md) |
-| Spanish | Kimi Antonelli | Lando Norris | Max Verstappen | [Report](races/f1-spain-2026/outputs/REPORT.md) |
-| Azerbaijan | George Russell | Charles Leclerc | Lando Norris | [Report](races/f1-azerbaijan-2026/outputs/REPORT.md) |
-| Bahrain | Kimi Antonelli | Max Verstappen | Lewis Hamilton | [Report](races/f1-bahrain-2026/outputs/REPORT.md) |
-
-These are the original forecasts, not revised predictions after seeing outcomes.
-Post-race evaluation files stay separate from training/qualifying snapshots.
-The historical event labels are preserved from the source pages: Spain at Madrid,
-and the event labeled Bahrain Grand Prix in Malaysia at Sepang.
-
-## Method and limitations
-
-The model is regularized Plackett–Luce ranking. It estimates driver strength from
-qualifying position and strictly earlier driver/team form. The Spanish and later
-projects use nested chronological selection over six small candidates; the
-earlier projects retain their original fixed-model method. Entire races are kept
-together in validation.
-
-No claim of guaranteed accuracy or absence of overfitting is made. Data is limited,
-probabilities are uncalibrated, and retrospectively retrieved classifications may
-include later corrections. The Italian forecast had incidental assistant exposure
-to a race-result search snippet; that result was excluded from model inputs, but
-the forecast is not described as fully blind.
-
-Read the [Bahrain leakage audit](races/f1-bahrain-2026/audit/REPORT.md) and
-[generalization review](races/f1-italy-2026/generalization/REPORT.md).
-Audit files and subproject READMEs preserve historical paths and descriptions from
-the original run. This root README gives the current portable run instructions.
-
-## Data refresh
-
-Predictions require no downloads or Excel workbook. Optional original `prepare*.py`
-scripts are retained for provenance, but fetching again can change retrospective
-source data. Do not refresh snapshots to reproduce the recorded forecasts.
-
-The Dutch and Italian preparation scripts additionally expect the original local
-workbook at `races/f1_2026_final_dataset.xlsx`; it is not bundled and is ignored by
-Git. Later preparation scripts use included sibling snapshots plus their explicitly
-allowed source URLs. Source URLs and hashes are recorded in each `data/provenance.json`.
-
-## Push to GitHub
-
-Create an empty GitHub repository, then run from this folder:
-
-```powershell
-git init -b main
-git add .
-git commit -m "Organize F1 podium models by race"
-git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
-git push -u origin main
-```
-
-Replace the example remote with your repository URL. `.gitignore` excludes
-environments, installed dependencies, caches, temporary replays, credentials and
-duplicate ZIPs. `.gitattributes` preserves original snapshot bytes across systems.
+The project models qualifying and recent form. It does not model live race telemetry, pit stops, race-day weather, reliability, or circuit-specific pace. Read the [data card](docs/data-card.md) before interpreting the forecasts or extending the dataset.

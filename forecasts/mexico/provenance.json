@@ -1,0 +1,22 @@
+{
+  "event": "Mexico",
+  "cutoff": "End of Mexico Grand Prix qualifying, 2026",
+  "requested_urls": [
+    "https://www.formula1.com/en/results/2026/races/1297/united-states/race-result",
+    "https://www.formula1.com/en/results/2026/races/1298/mexico/qualifying"
+  ],
+  "target_race_result_requested": false,
+  "prior_prediction_sha256_before_fetch": "f25c27f0cb7ca888fb84400424256914bcb7cfad9c563a6d4cad1a1c81ef0f25",
+  "prior_prediction_frozen_at": "2026-11-19T21:27:12.017821+00:00",
+  "prepared_at_utc": "2026-11-19T21:27:16.915000+00:00",
+  "imputed_qualifying_drivers": [
+    "LAW"
+  ],
+  "imputation": "Rank 22 for unclassified/missing qualifiers; not final grid.",
+  "historical_labels": "Previous snapshots plus preceding race classification; trailing NC ranks follow table order.",
+  "snapshot_limitation": "Retrospective source tables; no independently timestamped as-of snapshot.",
+  "sha256": {
+    "history.json": "30b910c935b1c3ed37f12af32d98cef2b535a0bb11f5ea629c526bec77898707",
+    "target_qualifying.json": "5bd7205abc574b2a00d4581083da9283c4aa83997aeaaa30d6f01f50bb2b1c51"
+  }
+}

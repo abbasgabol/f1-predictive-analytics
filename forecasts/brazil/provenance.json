@@ -1,0 +1,20 @@
+{
+  "event": "Brazil",
+  "cutoff": "End of Brazil Grand Prix qualifying, 2026",
+  "requested_urls": [
+    "https://www.formula1.com/en/results/2026/races/1298/mexico/race-result",
+    "https://www.formula1.com/en/results/2026/races/1299/brazil/qualifying"
+  ],
+  "target_race_result_requested": false,
+  "prior_prediction_sha256_before_fetch": "731887c2c00bbd57383466653cd5292755a3f987093382cf9f480eea29673ddf",
+  "prior_prediction_frozen_at": "2026-11-19T21:28:05.106960+00:00",
+  "prepared_at_utc": "2026-11-21T19:15:10.950888+00:00",
+  "imputed_qualifying_drivers": [],
+  "imputation": "Rank 22 for unclassified/missing qualifiers; not final grid.",
+  "historical_labels": "Previous snapshots plus preceding race classification; trailing NC ranks follow table order.",
+  "snapshot_limitation": "Retrospective source tables; no independently timestamped as-of snapshot.",
+  "sha256": {
+    "history.json": "7212d7a27efb8b7b64675ba20af799269e46565053708e6d071591d6d01c3979",
+    "target_qualifying.json": "6458e75d93eb4814a10344268bf2f840faa08a39ba2ed705962851dc7d312850"
+  }
+}

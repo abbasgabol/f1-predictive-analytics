@@ -1,0 +1,72 @@
+{
+  "dutch": {
+    "round": 12,
+    "name": "Netherlands",
+    "cutoff": "End of qualifying on 22 August 2026",
+    "selection": "fixed",
+    "input_semantic_sha256": "28d65e43fb873957b656b6f59132b7f5363cfe794e344c5082ccfaa981eaaa60"
+  },
+  "italy": {
+    "round": 13,
+    "name": "Italy",
+    "cutoff": "End of qualifying on 5 September 2026",
+    "selection": "fixed",
+    "input_semantic_sha256": "3815070f845390ab4d10c0f984585978ef65652d005c4decbdb9f7a18d2103e6"
+  },
+  "spain": {
+    "round": 14,
+    "name": "Spain",
+    "cutoff": "End of qualifying, 12 September 2026",
+    "selection": "nested",
+    "input_semantic_sha256": "5ba2d86f7579c41e86c991d3b1a64ee362d1bb2e625e704a2048a53bb0ddee02"
+  },
+  "azerbaijan": {
+    "round": 15,
+    "name": "Azerbaijan",
+    "cutoff": "End of qualifying, 25 September 2026",
+    "selection": "nested",
+    "input_semantic_sha256": "37d444073eff92e48ef9441192e4927821730f678a7ac5b75f6722983d8b7bc8"
+  },
+  "bahrain": {
+    "round": 16,
+    "name": "Bahrain",
+    "cutoff": "End of qualifying, 3 October 2026",
+    "selection": "nested",
+    "input_semantic_sha256": "3d83a2b07ca8d858b397b784426dba3fbfaf1d5416cbdfcc5b5441181bfb83b4"
+  },
+  "singapore": {
+    "round": 17,
+    "name": "Singapore",
+    "cutoff": "End of qualifying, 10 October 2026",
+    "selection": "nested",
+    "input_semantic_sha256": "dcbfcc7710dc3a43bc7e865ca439165691a8bb5eacbf740d3b8874552672858b"
+  },
+  "united-states": {
+    "round": 18,
+    "name": "United States",
+    "cutoff": "End of United States Grand Prix qualifying, 2026",
+    "selection": "nested",
+    "input_semantic_sha256": "4f0e3949b78f548a5198c9665caab2ac3c7d650e41baabb3e4ece9f490b91bcc"
+  },
+  "mexico": {
+    "round": 19,
+    "name": "Mexico",
+    "cutoff": "End of Mexico Grand Prix qualifying, 2026",
+    "selection": "nested",
+    "input_semantic_sha256": "c3746ba76b5ed28d490a180dbfec94e66846fb0cb2489a2bdbc68d7cd198f341"
+  },
+  "brazil": {
+    "round": 20,
+    "name": "Brazil",
+    "cutoff": "End of Brazil Grand Prix qualifying, 2026",
+    "selection": "nested",
+    "input_semantic_sha256": "55590b242606ba53a94cf2e05a6734deafeae7b3235bb54d41d61fba7072dd5b"
+  },
+  "las-vegas": {
+    "round": 21,
+    "name": "Las Vegas",
+    "cutoff": "End of qualifying, 20 November 2026 Las Vegas time (21 November in Pakistan)",
+    "selection": "nested",
+    "input_semantic_sha256": "2769eb46957f1e20e6384d886129069a608a402192993197594382686b225e9d"
+  }
+}

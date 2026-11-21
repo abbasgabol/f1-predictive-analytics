@@ -1,0 +1,11 @@
+{
+  "frozen_at_utc": "2026-11-19T21:27:12.017821+00:00",
+  "prediction_sha256": "f25c27f0cb7ca888fb84400424256914bcb7cfad9c563a6d4cad1a1c81ef0f25",
+  "sha256": {
+    "outputs/prediction.json": "f25c27f0cb7ca888fb84400424256914bcb7cfad9c563a6d4cad1a1c81ef0f25",
+    "outputs/model.json": "2d5cfe033a8cf28cc88895ecb4c5adead948e2ff8e51dd52a407af1d90638b9b",
+    "data/history.json": "5372c3c238b8643f5a0f1274e3c65aa9429da5e3a3b377ce891d7d03e08350cf",
+    "data/target_qualifying.json": "c35452084d5a21a528272764ed2c02333980922676a58f992f8db9db39ebd096"
+  },
+  "purpose": "Freeze retrospective prediction before retrieving this race outcome for a later forecast; not proof of publication before the real event."
+}

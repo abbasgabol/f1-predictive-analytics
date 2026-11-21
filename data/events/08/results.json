@@ -1,0 +1,90 @@
+[
+  {
+    "driver": "RUS",
+    "finish_position": 1
+  },
+  {
+    "driver": "LEC",
+    "finish_position": 8
+  },
+  {
+    "driver": "HAM",
+    "finish_position": 5
+  },
+  {
+    "driver": "ANT",
+    "finish_position": 3
+  },
+  {
+    "driver": "VER",
+    "finish_position": 2
+  },
+  {
+    "driver": "NOR",
+    "finish_position": 7
+  },
+  {
+    "driver": "PIA",
+    "finish_position": 4
+  },
+  {
+    "driver": "HAD",
+    "finish_position": 6
+  },
+  {
+    "driver": "LAW",
+    "finish_position": 9
+  },
+  {
+    "driver": "LIN",
+    "finish_position": 10
+  },
+  {
+    "driver": "GAS",
+    "finish_position": 13
+  },
+  {
+    "driver": "BOR",
+    "finish_position": 11
+  },
+  {
+    "driver": "BEA",
+    "finish_position": 14
+  },
+  {
+    "driver": "HUL",
+    "finish_position": 12
+  },
+  {
+    "driver": "OCO",
+    "finish_position": 16
+  },
+  {
+    "driver": "COL",
+    "finish_position": 15
+  },
+  {
+    "driver": "SAI",
+    "finish_position": 20
+  },
+  {
+    "driver": "ALB",
+    "finish_position": 17
+  },
+  {
+    "driver": "PER",
+    "finish_position": 21
+  },
+  {
+    "driver": "BOT",
+    "finish_position": 22
+  },
+  {
+    "driver": "ALO",
+    "finish_position": 18
+  },
+  {
+    "driver": "STR",
+    "finish_position": 19
+  }
+]

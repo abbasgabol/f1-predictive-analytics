@@ -1,0 +1,6 @@
+{
+  "comparison": "One local cold-process run each; both fit, select and backtest Las Vegas. New path also verifies frozen artifacts. Not a portable benchmark.",
+  "legacy_seconds": 10.682,
+  "shared_pipeline_seconds": 7.242,
+  "speedup_ratio": 1.48
+}

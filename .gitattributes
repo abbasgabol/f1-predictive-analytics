@@ -1,6 +1,5 @@
-# Preserve the exact bytes of imported audited source/data snapshots.
-# CRLF conversion would invalidate the recorded SHA-256 hashes.
-races/** -text
-snapshot_manifest.json -text
-*.py text eol=lf
-races/**/*.py -text
+* text=auto eol=lf
+# Immutable data and evidence retain their original bytes on all platforms.
+data/** -text
+forecasts/** -text
+docs/audits/** -text

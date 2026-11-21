@@ -1,0 +1,20 @@
+{
+  "event": "United States",
+  "cutoff": "End of United States Grand Prix qualifying, 2026",
+  "requested_urls": [
+    "https://www.formula1.com/en/results/2026/races/1296/singapore/race-result",
+    "https://www.formula1.com/en/results/2026/races/1297/united-states/qualifying"
+  ],
+  "target_race_result_requested": false,
+  "prior_prediction_sha256_before_fetch": "78ff5e32f8d0f6379e2465d9dad694da5337e03d8fd6f07c42978832f5d51ce3",
+  "prior_prediction_frozen_at": "2026-11-19T21:26:06.604888+00:00",
+  "prepared_at_utc": "2026-11-19T21:26:14.551803+00:00",
+  "imputed_qualifying_drivers": [],
+  "imputation": "Rank 22 for unclassified/missing qualifiers; not final grid.",
+  "historical_labels": "Previous snapshots plus preceding race classification; trailing NC ranks follow table order.",
+  "snapshot_limitation": "Retrospective source tables; no independently timestamped as-of snapshot.",
+  "sha256": {
+    "history.json": "5372c3c238b8643f5a0f1274e3c65aa9429da5e3a3b377ce891d7d03e08350cf",
+    "target_qualifying.json": "c35452084d5a21a528272764ed2c02333980922676a58f992f8db9db39ebd096"
+  }
+}

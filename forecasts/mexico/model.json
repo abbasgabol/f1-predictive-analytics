@@ -1,0 +1,37 @@
+{
+  "selected_model": {
+    "name": "form_l2_0.03",
+    "columns": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "l2": 0.03
+  },
+  "coefficients": [
+    3.918392565301978,
+    0.4768779738917046,
+    2.129806760523907,
+    0.7853197358172219
+  ],
+  "training_races": 18,
+  "training_driver_rows": 396,
+  "features": [
+    "qualifying_quality",
+    "driver_last3_finish_quality",
+    "driver_prior_podium_rate",
+    "team_last3_races_finish_quality"
+  ],
+  "selection_rule": "Inner chronological NLL; prefer fewer features then stronger L2 within one standard error of best.",
+  "sha256": {
+    "history.json": "30b910c935b1c3ed37f12af32d98cef2b535a0bb11f5ea629c526bec77898707",
+    "provenance.json": "680e91219391f328521fc0b1405351d90962968c28855923f4aa6605ab00b2ff",
+    "target_qualifying.json": "5bd7205abc574b2a00d4581083da9283c4aa83997aeaaa30d6f01f50bb2b1c51"
+  },
+  "implementation_sha256": {
+    "model.py": "42152d29f4a73faa622b24263c0b37ffb4beb644d2e54caaab843665604e02d9",
+    "selection.py": "5623f65a9717c9844f486573dd523f00ea52555ed3b76030e1d18f5c51dbef8b",
+    "predict.py": "fc23a6c019f8f7357f0ddc1f0d7611dc940ec3ba8ac45db2e9b2a4ca4b1a2d21"
+  }
+}
