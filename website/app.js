@@ -91,18 +91,15 @@ function renderRace(race) {
 
 function renderScores(races) {
   const scored = races.filter((race) => race.actual);
-  let hits = 0, baseline = 0, wins = 0, exact = 0, fullPodiums = 0, places = 0;
+  let hits = 0, baseline = 0, wins = 0, fullPodiums = 0;
   for (const race of scored) {
     const qualifying = race.field.filter((driver) => driver.qualifying <= 3)
       .map((driver) => driver.code);
     const correctNames = overlap(race.prediction, race.actual);
-    const correctPlaces = race.prediction.filter((code, i) => code === race.actual[i]).length;
     hits += correctNames;
-    places += correctPlaces;
     baseline += overlap(qualifying, race.actual);
     wins += Number(race.prediction[0] === race.actual[0]);
     fullPodiums += Number(correctNames === race.actual.length);
-    exact += Number(correctPlaces === race.actual.length);
   }
   byId("scored").textContent = scored.length + " of " + races.length + " races scored";
   const slots = scored.length * 3;
@@ -111,8 +108,6 @@ function renderScores(races) {
     [baseline, slots, "Qualifying baseline", "Top three qualifiers on the podium"],
     [wins, scored.length, "Winners correct", "Predicted winner finished first"],
     [fullPodiums, scored.length, "All three names", "All picks made the podium, in any order"],
-    [places, slots, "Positions correct", "Driver finished in the predicted place"],
-    [exact, scored.length, "Exact podium order", "All three finished in their predicted places"],
   ];
   byId("metrics").replaceChildren(...metrics.map(([value, total, label, note]) => {
     const tile = element("div", undefined, "metric");
