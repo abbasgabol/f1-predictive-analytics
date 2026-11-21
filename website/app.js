@@ -1,3 +1,5 @@
+import { portraits } from "./portraits.js";
+
 const byId = (id) => document.getElementById(id);
 const percent = (value) => new Intl.NumberFormat("en", {
   style: "percent", maximumFractionDigits: 1,
@@ -14,11 +16,32 @@ function overlap(lineup, actual) {
   return lineup.filter((code) => actual.includes(code)).length;
 }
 
+function driverIdentity(driver, nameTag, lazy = false) {
+  const identity = element("div", undefined, "driver-identity");
+  const photo = element("img", undefined, "driver-photo");
+  photo.alt = "";
+  photo.width = 48;
+  photo.height = 48;
+  photo.decoding = "async";
+  if (lazy) photo.loading = "lazy";
+  const fallback = element("span", driver.code, "driver-photo-fallback");
+  fallback.setAttribute("aria-hidden", "true");
+  fallback.hidden = true;
+  photo.addEventListener("error", () => {
+    photo.hidden = true;
+    fallback.hidden = false;
+  });
+  photo.src = portraits[driver.code];
+  const label = element("div");
+  label.append(element(nameTag, driver.name), element("small", driver.team));
+  identity.append(photo, fallback, label);
+  return identity;
+}
+
 function driverRow(code, index, drivers, actual) {
   const driver = drivers.get(code);
   const row = element("li", undefined, "podium-row");
-  const identity = element("div");
-  identity.append(element("strong", driver.name), element("small", driver.team));
+  const identity = driverIdentity(driver, "strong");
   row.append(element("span", "P" + (index + 1), "position"), identity);
   if (actual) {
     const result = actual.indexOf(code);
@@ -37,9 +60,9 @@ function renderGrid(race) {
   byId("field-count").textContent = field.length + " drivers";
   byId("grid").replaceChildren(...field.map((driver) => {
     const row = element("tr");
-    const identity = element("th", driver.name);
+    const identity = element("th");
     identity.scope = "row";
-    identity.append(element("small", driver.team));
+    identity.append(driverIdentity(driver, "span", true));
     const podium = element("td", undefined, "chance");
     const bar = element("meter");
     bar.max = 1;
@@ -66,42 +89,17 @@ function renderRace(race) {
   renderGrid(race);
 }
 
-function renderScores(races, selectRace) {
+function renderScores(races) {
   const scored = races.filter((race) => race.actual);
   let hits = 0, baseline = 0, wins = 0, exact = 0;
-  byId("scores").replaceChildren(...races.map((race) => {
-    const row = element("tr");
-    const title = element("th");
-    title.scope = "row";
-    const link = element("a", race.name);
-    link.href = "?race=" + race.slug + "#explorer";
-    link.addEventListener("click", (event) => {
-      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-      event.preventDefault();
-      selectRace(race.slug);
-      byId("explorer").scrollIntoView();
-      byId("race").focus({preventScroll: true});
-    });
-    title.append(link);
-    row.append(title);
-    if (!race.actual) {
-      const cell = element("td", "Result absent from archive", "muted");
-      cell.colSpan = 3;
-      row.append(cell);
-      return row;
-    }
-    const count = overlap(race.prediction, race.actual);
-    const qualifying = [...race.field].sort((a, b) => a.qualifying - b.qualifying)
-      .slice(0, 3).map((driver) => driver.code);
-    const reference = overlap(qualifying, race.actual);
-    const winner = race.prediction[0] === race.actual[0];
-    hits += count;
-    baseline += reference;
-    wins += Number(winner);
+  for (const race of scored) {
+    const qualifying = race.field.filter((driver) => driver.qualifying <= 3)
+      .map((driver) => driver.code);
+    hits += overlap(race.prediction, race.actual);
+    baseline += overlap(qualifying, race.actual);
+    wins += Number(race.prediction[0] === race.actual[0]);
     exact += Number(race.prediction.every((code, i) => code === race.actual[i]));
-    row.append(element("td", count + " / 3"), element("td", reference + " / 3"), element("td", winner ? "Correct" : "Miss", winner ? "hit-text" : ""));
-    return row;
-  }));
+  }
   byId("scored").textContent = scored.length + " of " + races.length + " races scored";
   const slots = scored.length * 3;
   const metrics = [
@@ -140,7 +138,7 @@ async function init() {
     selector.addEventListener("change", () => selectRace(selector.value));
     byId("sort").addEventListener("change", () => renderGrid(lookup.get(selector.value)));
     selectRace(new URLSearchParams(location.search).get("race"), false);
-    renderScores(races, selectRace);
+    renderScores(races);
     selector.disabled = false;
     byId("race-detail").hidden = false;
   } catch (error) {
