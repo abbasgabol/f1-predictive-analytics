@@ -14,6 +14,8 @@ Grid Forecast compares saved podium predictions against recorded race classifica
 
 Run `python -m http.server 8000 --directory website` and open [localhost:8000](http://localhost:8000). Regenerate the dashboard dataset with `python scripts/export_site.py` after updating the archived inputs.
 
+The championship archive includes the final Drivers’ and Constructors’ standings for 2016–2025. To rebuild it from Formula 1’s official results pages, run `python scripts/export_standings.py`. The standings are display data for the website.
+
 ## What this project demonstrates
 
 | Area | Implementation |

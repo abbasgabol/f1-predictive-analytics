@@ -8,13 +8,14 @@
   <title>Grid Forecast — F1 Podium Predictions by Abbas Gabol</title>
   <link rel="stylesheet" href="./style.css">
   <script type="module" src="./app.js"></script>
+  <script type="module" src="./standings.js"></script>
 </head>
 <body>
   <a class="skip" href="#explorer">Skip to race explorer</a>
   <header class="top"><div class="wrap masthead">
     <a class="brand" href="./" aria-label="Grid Forecast home"><span class="mark" aria-hidden="true"></span> GRID FORECAST</a>
     <nav aria-label="Main navigation">
-      <a href="#explorer">Races</a><a href="#scorecard">Scorecard</a><a href="#method">Method</a>
+      <a href="#explorer">Races</a><a href="#scorecard">Scorecard</a><a href="#standings">Standings</a><a href="#method">Method</a>
     </nav>
     <a class="repo" href="https://github.com/abbasgabol/f1-predictive-analytics">GitHub</a>
   </div></header>
@@ -65,6 +66,33 @@
             </table></div>
             <p class="muted table-note">Probabilities are model estimates. They have not been calibrated.</p>
           </details>
+        </div>
+      </section>
+      <section id="standings" aria-labelledby="standings-title">
+        <div class="section-head">
+          <div><p class="eyebrow">2016–2025</p><h2 id="standings-title">Championship standings</h2></div>
+          <div class="control"><label for="season">Season</label><select id="season" disabled><option>Loading seasons…</option></select></div>
+        </div>
+        <p id="standings-error" role="alert" hidden>Standings could not load. Refresh the page to try again.</p>
+        <div id="season-standings" class="standings-layout" hidden>
+          <article class="standings-board" aria-labelledby="drivers-title">
+            <div class="standings-heading"><h3 id="drivers-title">Drivers’ Championship</h3><a id="driver-source">Official results</a></div>
+            <div class="standings-scroll table-scroll" tabindex="0" role="region" aria-labelledby="drivers-title">
+              <table>
+                <thead><tr><th scope="col">Pos.</th><th scope="col">Driver</th><th scope="col">Points</th></tr></thead>
+                <tbody id="driver-standings"></tbody>
+              </table>
+            </div>
+          </article>
+          <article class="standings-board" aria-labelledby="constructors-title">
+            <div class="standings-heading"><h3 id="constructors-title">Constructors’ Championship</h3><a id="constructor-source">Official results</a></div>
+            <div class="standings-scroll table-scroll" tabindex="0" role="region" aria-labelledby="constructors-title">
+              <table>
+                <thead><tr><th scope="col">Pos.</th><th scope="col">Constructor</th><th scope="col">Points</th></tr></thead>
+                <tbody id="constructor-standings"></tbody>
+              </table>
+            </div>
+          </article>
         </div>
       </section>
       <section id="method" aria-labelledby="method-title" class="method">
