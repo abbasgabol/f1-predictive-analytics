@@ -77,6 +77,49 @@ small { color: var(--muted); display: block; font-size: .84rem; font-weight: 400
 .verdict, .driver-code { font: 700 .76rem ui-monospace, Consolas, monospace; color: var(--muted); }
 .hit { color: var(--green); background: #e6f2dc; padding: .3rem; }
 .board-note { border-top: 1px solid var(--line); padding-top: .75rem; margin: 0; font-size: .88rem; color: var(--muted); }
+.prediction-charts { margin-top: 1.6rem; }
+.chart-heading { margin-bottom: .75rem; }
+.chart-heading h4, .probability-panel figcaption, .backtest-chart figcaption { font-size: 1.15rem; font-weight: 750; }
+.chart-heading h4, .backtest-chart figcaption { margin-bottom: .25rem; }
+.chart-heading p, .backtest-chart p { margin-bottom: 0; font-size: .92rem; }
+.probability-panels { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.probability-panel, .backtest-chart { margin: 0; background: #fff; border: 1px solid var(--line); padding: 1rem; }
+.probability-bars, .backtest-bars { margin: .75rem 0 0; padding: 0; list-style: none; }
+.probability-row, .probability-axis {
+  display: grid;
+  grid-template-columns: 2.4rem minmax(0, 1fr) 3.7rem;
+  align-items: center;
+  column-gap: .6rem;
+  font-variant-numeric: tabular-nums;
+}
+.probability-row { min-height: 32px; }
+.probability-row abbr { text-decoration: none; font-weight: 750; }
+.probability-value { text-align: right; font-size: .875rem; }
+.probability-track { display: block; height: 13px; background: #edf0e8; }
+.probability-fill { display: block; height: 100%; background: #497047; }
+#win-bars .probability-fill { background: #396c67; }
+.probability-axis {
+  display: flex;
+  justify-content: space-between;
+  margin: .35rem 4.3rem 0 3rem;
+  color: var(--muted);
+  font-size: .8rem;
+}
+.backtest-chart { grid-column: 1 / -1; }
+.backtest-bars { display: grid; grid-template-columns: repeat(14, minmax(0, 1fr)); gap: clamp(.15rem, 1vw, .8rem); }
+.backtest-column {
+  display: grid;
+  grid-template-rows: auto 96px auto;
+  grid-template-areas: "score" "bar" "round";
+  gap: .3rem;
+  text-align: center;
+  font-size: .8rem;
+  font-variant-numeric: tabular-nums;
+}
+.backtest-round { grid-area: round; color: var(--muted); }
+.backtest-score { grid-area: score; }
+.backtest-track { display: flex; align-items: end; grid-area: bar; background: #edf0e8; }
+.backtest-fill { width: 100%; background: #497047; }
 .grid-details { margin-top: 1rem; border: 1px solid var(--line); background: #fff; }
 summary { cursor: pointer; font-weight: 750; padding: .85rem 1rem; }
 summary:hover { background: #e9eedf; }
@@ -133,11 +176,13 @@ footer span:first-child { color: var(--acid); font-weight: 850; letter-spacing: 
   .masthead { flex-wrap: wrap; column-gap: 1rem; row-gap: .5rem; padding-block: .8rem; }
   nav { order: 3; width: 100%; }
   .hero-layout { grid-template-columns: 1fr; }
-  .comparison, .method, .standings-layout { grid-template-columns: 1fr; }
+  .comparison, .method, .standings-layout, .probability-panels { grid-template-columns: 1fr; }
   .section-head, .event-head { align-items: start; flex-direction: column; }
   .workspace section + section { margin-top: 3rem; }
   th, td { padding-inline: .65rem; }
   .chance { gap: .35rem; }
+  .backtest-column { grid-template-rows: auto 70px auto; font-size: .72rem; }
+  .backtest-chart { padding-inline: .65rem; }
   .driver-identity { --portrait-size: 48px; }
   .podium-row .driver-identity { --portrait-size: 60px; }
   .podium-row { min-height: 76px; }

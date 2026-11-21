@@ -74,6 +74,53 @@ function renderGrid(race) {
   }));
 }
 
+function renderProbabilities(race) {
+  for (const key of ["podium", "win"]) {
+    const ranked = [...race.field].sort((a, b) => b[key] - a[key]).slice(0, 6);
+    const rows = ranked.map((driver) => {
+      const row = element("li", undefined, "probability-row");
+      const code = element("abbr", driver.code);
+      code.title = driver.name;
+      code.setAttribute("aria-label", driver.name);
+      const track = element("span", undefined, "probability-track");
+      const fill = element("span", undefined, "probability-fill");
+      fill.style.width = percent(driver[key]);
+      track.setAttribute("aria-hidden", "true");
+      track.append(fill);
+      row.append(code, track, element("span", percent(driver[key]), "probability-value"));
+      return row;
+    });
+    byId(key + "-bars").replaceChildren(...rows);
+  }
+}
+
+async function renderBacktest() {
+  try {
+    const response = await fetch("./backtest.json");
+    if (!response.ok) return;
+    const { folds, mean, winners } = await response.json();
+    byId("backtest-bars").replaceChildren(...folds.map(({ round, hits }) => {
+      const item = element("li", undefined, "backtest-column");
+      const bar = element("span", undefined, "backtest-track");
+      bar.setAttribute("aria-hidden", "true");
+      const fill = element("span", undefined, "backtest-fill");
+      fill.style.height = percent(hits / 3);
+      bar.append(fill);
+      const roundLabel = element("span", "R" + round, "backtest-round");
+      roundLabel.setAttribute("aria-label", "Round " + round);
+      const score = element("strong", hits + "/3", "backtest-score");
+      item.append(roundLabel, score, bar);
+      return item;
+    }));
+    byId("backtest-mean").textContent = mean.toFixed(2) + " / 3";
+    byId("backtest-wins").textContent = winners + " / " + folds.length;
+    byId("backtest-summary").hidden = false;
+    byId("backtest-chart").hidden = false;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 function renderRace(race) {
   const drivers = new Map(race.field.map((driver) => [driver.code, driver]));
   byId("round").textContent = "ROUND " + race.round;
@@ -86,6 +133,7 @@ function renderRace(race) {
   byId("race-score").textContent = race.actual
     ? overlap(race.prediction, race.actual) + " / 3 podium picks"
     : "Awaiting result in archive";
+  renderProbabilities(race);
   renderGrid(race);
 }
 
@@ -153,3 +201,4 @@ async function init() {
 }
 
 init();
+renderBacktest();

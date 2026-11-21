@@ -61,16 +61,28 @@ def export():
     return json.dumps(races, ensure_ascii=False, separators=(",", ":")) + "\n"
 
 
+def export_backtest():
+    forecast = read(ROOT / "forecasts/las-vegas/prediction.json")
+    summary = forecast["historical_validation"]
+    data = {
+        "folds": [{"round": fold["round"], "hits": fold["hits"]} for fold in forecast["outer_folds"]],
+        "mean": summary["mean_podium_hits"],
+        "winners": summary["winners_correct"],
+    }
+    return json.dumps(data, separators=(",", ":")) + "\n"
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true", help="Check the committed export")
     args = parser.parse_args()
-    content = export()
-    if args.check:
-        if OUTPUT.read_text(encoding="utf-8") != content:
-            parser.exit(1, "Dashboard export is outdated. Run python scripts/export_site.py.\n")
-    else:
-        OUTPUT.write_text(content, encoding="utf-8", newline="\n")
+    outputs = {OUTPUT: export(), OUTPUT.with_name("backtest.json"): export_backtest()}
+    for path, content in outputs.items():
+        if args.check:
+            if not path.is_file() or path.read_text(encoding="utf-8") != content:
+                parser.exit(1, f"{path.name} is outdated. Run python scripts/export_site.py.\n")
+        else:
+            path.write_text(content, encoding="utf-8", newline="\n")
 
 
 if __name__ == "__main__":

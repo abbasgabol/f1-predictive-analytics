@@ -53,6 +53,24 @@
             <article class="board forecast"><h4>Predicted podium</h4><ol id="forecast"></ol><p id="joint" class="board-note"></p></article>
             <article class="board"><h4>Actual podium</h4><ol id="actual"></ol><p id="result-note" class="board-note"></p></article>
           </div>
+          <section class="prediction-charts" aria-labelledby="probability-title">
+            <div class="chart-heading">
+              <h4 id="probability-title">Prediction probabilities</h4>
+              <p class="muted">Top six drivers in each chart. Both charts use the same 0–100% scale.</p>
+            </div>
+            <div class="probability-panels">
+              <figure class="probability-panel">
+                <figcaption>Chance of a podium</figcaption>
+                <ol class="probability-bars" id="podium-bars"></ol>
+                <div class="probability-axis" aria-hidden="true"><span>0%</span><span>50%</span><span>100%</span></div>
+              </figure>
+              <figure class="probability-panel">
+                <figcaption>Chance of a win</figcaption>
+                <ol class="probability-bars" id="win-bars"></ol>
+                <div class="probability-axis" aria-hidden="true"><span>0%</span><span>50%</span><span>100%</span></div>
+              </figure>
+            </div>
+          </section>
           <details class="grid-details">
             <summary>Full grid probabilities</summary>
             <div class="grid-controls">
@@ -100,9 +118,14 @@
           <div class="method-links"><a href="https://github.com/abbasgabol/f1-predictive-analytics/blob/main/docs/methodology.md">Model methodology</a><a href="https://github.com/abbasgabol/f1-predictive-analytics/blob/main/docs/data-card.md">Data and sources</a></div>
         </div>
         <div class="validation"><h3>Walk-forward backtest</h3><p>For the Las Vegas model, each of 14 historical rounds was held out in turn. Training and model selection used earlier rounds in each fold.</p>
-          <dl><div><dt>Mean podium picks</dt><dd>1.93 / 3</dd></div><div><dt>Winner hits</dt><dd>8 / 14</dd></div></dl>
+          <dl id="backtest-summary" hidden><div><dt>Mean podium picks</dt><dd id="backtest-mean"></dd></div><div><dt>Winner hits</dt><dd id="backtest-wins"></dd></div></dl>
           <p class="muted">The archive includes retrospectively collected classifications. An Italy search snippet showed the outcome during research. The model input still excluded that race’s result.</p>
         </div>
+        <figure id="backtest-chart" class="backtest-chart" hidden>
+          <figcaption>Correct podium picks by held-out round</figcaption>
+          <p class="muted">Driver names matched in any order. Each bar is scored out of three.</p>
+          <ol id="backtest-bars" class="backtest-bars"></ol>
+        </figure>
       </section>
     </div>
   </main>
