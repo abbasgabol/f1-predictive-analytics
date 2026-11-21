@@ -20,8 +20,8 @@ function driverIdentity(driver, nameTag, lazy = false) {
   const identity = element("div", undefined, "driver-identity");
   const photo = element("img", undefined, "driver-photo");
   photo.alt = "";
-  photo.width = 48;
-  photo.height = 48;
+  photo.width = 80;
+  photo.height = 80;
   photo.decoding = "async";
   if (lazy) photo.loading = "lazy";
   const fallback = element("span", driver.code, "driver-photo-fallback");
@@ -91,28 +91,36 @@ function renderRace(race) {
 
 function renderScores(races) {
   const scored = races.filter((race) => race.actual);
-  let hits = 0, baseline = 0, wins = 0, exact = 0;
+  let hits = 0, baseline = 0, wins = 0, exact = 0, fullPodiums = 0, places = 0;
   for (const race of scored) {
     const qualifying = race.field.filter((driver) => driver.qualifying <= 3)
       .map((driver) => driver.code);
-    hits += overlap(race.prediction, race.actual);
+    const correctNames = overlap(race.prediction, race.actual);
+    const correctPlaces = race.prediction.filter((code, i) => code === race.actual[i]).length;
+    hits += correctNames;
+    places += correctPlaces;
     baseline += overlap(qualifying, race.actual);
     wins += Number(race.prediction[0] === race.actual[0]);
-    exact += Number(race.prediction.every((code, i) => code === race.actual[i]));
+    fullPodiums += Number(correctNames === race.actual.length);
+    exact += Number(correctPlaces === race.actual.length);
   }
   byId("scored").textContent = scored.length + " of " + races.length + " races scored";
   const slots = scored.length * 3;
   const metrics = [
-    [hits, slots, "Podium names", "Order ignored"],
-    [baseline, slots, "Qualifying baseline", "Order ignored"],
-    [wins, scored.length, "Winners", "Correct first place"],
-    [exact, scored.length, "Exact podiums", "All three in order"],
+    [hits, slots, "Podium picks correct", "Driver appeared anywhere on the podium"],
+    [baseline, slots, "Qualifying baseline", "Top three qualifiers on the podium"],
+    [wins, scored.length, "Winners correct", "Predicted winner finished first"],
+    [fullPodiums, scored.length, "All three names", "All picks made the podium, in any order"],
+    [places, slots, "Positions correct", "Driver finished in the predicted place"],
+    [exact, scored.length, "Exact podium order", "All three finished in their predicted places"],
   ];
   byId("metrics").replaceChildren(...metrics.map(([value, total, label, note]) => {
     const tile = element("div", undefined, "metric");
     const number = element("div", String(value), "metric-value");
     number.append(element("span", " / " + total));
-    tile.append(element("h3", label), number, element("p", note, "muted"));
+    const valueRow = element("div", undefined, "metric-result");
+    valueRow.append(number, element("span", total ? percent(value / total) : "—", "metric-percent"));
+    tile.append(element("h3", label), valueRow, element("p", note, "muted"));
     return tile;
   }));
 }
@@ -144,6 +152,7 @@ async function init() {
   } catch (error) {
     byId("load-error").textContent = "Race data could not load. Refresh the page to try again.";
     byId("load-error").hidden = false;
+    byId("scored").textContent = "Scores could not load.";
     console.error(error);
   }
 }

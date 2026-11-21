@@ -27,7 +27,13 @@
           <p>Pick a Grand Prix to compare the model’s qualifying cutoff forecast with the race result.</p>
           <a class="hero-link" href="#explorer">Explore the races</a>
         </div>
-        <div class="hero-art" aria-hidden="true"><div class="apex"></div><span>QUALIFYING / RACE</span></div>
+        <section id="scorecard" class="hero-scorecard" aria-labelledby="scorecard-title">
+          <div class="scorecard-heading">
+            <h2 id="scorecard-title">Model scorecard</h2>
+            <p id="scored">Loading scores…</p>
+          </div>
+          <div class="metrics" id="metrics"></div>
+        </section>
       </div>
     </section>
     <div class="wrap workspace">
@@ -61,14 +67,6 @@
           </details>
         </div>
       </section>
-      <section id="scorecard" aria-labelledby="scorecard-title">
-        <div class="section-head">
-          <div><p class="eyebrow">FORECAST EVALUATION</p><h2 id="scorecard-title">The scorecard</h2></div>
-          <p class="muted" id="scored"></p>
-        </div>
-        <div class="metrics" id="metrics"></div>
-        <p class="muted table-note">The qualifying baseline picks the three fastest qualifiers. Totals cover races with a recorded podium.</p>
-      </section>
       <section id="method" aria-labelledby="method-title" class="method">
         <div><p class="eyebrow">MODEL &amp; VALIDATION</p><h2 id="method-title">How it works</h2><p>A regularized Plackett–Luce model assigns each driver a score and estimates the probability of every ordered podium. The forecast uses qualifying and earlier race history. The explorer reads the saved forecasts and adds race results for scoring.</p>
           <div class="method-links"><a href="https://github.com/abbasgabol/f1-predictive-analytics/blob/main/docs/methodology.md">Model methodology</a><a href="https://github.com/abbasgabol/f1-predictive-analytics/blob/main/docs/data-card.md">Data and sources</a></div>
@@ -80,6 +78,6 @@
       </section>
     </div>
   </main>
-  <footer><div class="wrap"><span>GRID FORECAST</span><span>Abbas Gabol · Independent ML project</span><span class="photo-credits">Photos by <a href="https://www.formula1.com/en/drivers">Formula 1</a>, <a href="https://www.haasf1team.com/season/team/ryo-hirakawa">Haas</a>, and <a href="https://www.yukitsunoda.com/profile/">Yuki Tsunoda’s site</a></span></div></footer>
+  <footer><div class="wrap"><span>GRID FORECAST</span><span>Abbas Gabol · Independent ML project</span><a href="https://www.formula1.com/en/drivers">Driver photos by Formula 1</a></div></footer>
 </body>
 </html>
