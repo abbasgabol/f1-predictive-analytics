@@ -18,6 +18,7 @@ def export():
         row["event"]: row["actual"]
         for row in read(ROOT / "docs/audits/chat-baseline.json")["races"]
     }
+    reported = read(ROOT / "data/evaluation/podiums.json")
     races = []
     for slug, config in sorted(catalog.items(), key=lambda pair: pair[1]["round"]):
         number = config["round"]
@@ -36,7 +37,11 @@ def export():
             for row in forecast["field"]
         ]
         actual, source = None, None
-        if slug in supplied:
+        podium_details = reported.get(slug)
+        if podium_details is not None:
+            actual = [row["driver"] for row in podium_details]
+            source = "User-supplied race classification"
+        elif slug in supplied:
             actual, source = supplied[slug], "Reader supplied classification"
         elif (event / "results.json").exists():
             results = read(event / "results.json")
@@ -45,7 +50,7 @@ def export():
         prediction = [row["driver"] for row in forecast["prediction"]]
         known = {row["code"] for row in field}
         for lineup in (prediction, actual):
-            if lineup is not None and (len(set(lineup)) != 3 or not set(lineup) <= known):
+            if lineup is not None and (len(lineup) != 3 or len(set(lineup)) != 3 or not set(lineup) <= known):
                 raise ValueError(f"Invalid podium for {slug}: {lineup}")
         races.append({
             "slug": slug,
@@ -57,6 +62,7 @@ def export():
             "source": source,
             "joint": forecast["ordered_podium_probability"],
             "field": field,
+            **({"actualDetails": podium_details} if podium_details is not None else {}),
         })
     return json.dumps(races, ensure_ascii=False, separators=(",", ":")) + "\n"
 

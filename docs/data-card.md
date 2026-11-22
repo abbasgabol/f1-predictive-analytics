@@ -26,7 +26,7 @@ data/manifest.json                    File checksums
 forecasts/<race-name>/                 Original outputs and provenance
 ```
 
-There is no round-21 race result in this dataset. Results for earlier forecast targets remain in the event store because they become valid historical inputs for later forecasts. For any particular target, `load_race` opens result files only for strictly earlier rounds. It opens only the qualifying file for the target round.
+The user supplied the Las Vegas podium after the forecast. It lives in [the dashboard evaluation file](../data/evaluation/podiums.json), outside the model’s event store. The forecast loader does not read this file. A full round-21 race classification has not been added to the training data. Results for earlier forecast targets remain in the event store because they become valid historical inputs for later forecasts. For any particular target, `load_race` opens result files only for strictly earlier rounds. It opens only the qualifying file for the target round.
 
 Qualifying records use these allowed fields: `round`, `gp`, `driver`, `name`, `team`, `qualifying_position`, `q1`, `q2`, and `q3`. Historical results supply driver identifiers and `finish_position`, joined to qualifying by driver. Unknown target fields, mismatched drivers, invalid ranks, missing rounds, and incomplete entrant lists fail validation.
 

@@ -10,7 +10,7 @@ The model combines qualifying position with earlier driver and team form. A shar
 
 **[Open Grid Forecast](https://grid-forecast-f1.vercel.app/)**
 
-Grid Forecast compares saved podium predictions against recorded race classifications, with a qualifying baseline and separate counts for podium membership, winners, and exact orders. Choose a race to see the full grid probabilities. The dashboard has no live data dependency.
+Grid Forecast compares saved podium predictions against recorded race classifications, with a qualifying baseline and separate counts for podium picks, winners, and races where all three picks made the podium. Choose a race to see the probability charts and the full grid. The user-supplied Las Vegas podium is stored separately for evaluation. The dashboard has no live data dependency.
 
 Run `python -m http.server 8000 --directory website` and open [localhost:8000](http://localhost:8000). Regenerate the dashboard dataset with `python scripts/export_site.py` after updating the archived inputs.
 

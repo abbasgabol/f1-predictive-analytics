@@ -38,15 +38,19 @@ function driverIdentity(driver, nameTag, lazy = false) {
   return identity;
 }
 
-function driverRow(code, index, drivers, actual) {
+function driverRow(code, index, drivers, { actual, result } = {}) {
   const driver = drivers.get(code);
   const row = element("li", undefined, "podium-row");
   const identity = driverIdentity(driver, "strong");
   row.append(element("span", "P" + (index + 1), "position"), identity);
   if (actual) {
-    const result = actual.indexOf(code);
-    const label = result === index ? "Exact place" : result >= 0 ? "Podium hit" : "Miss";
-    row.append(element("span", label, result >= 0 ? "verdict hit" : "verdict"));
+    const place = actual.indexOf(code);
+    const label = place === index ? "Exact place" : place >= 0 ? "Podium hit" : "Miss";
+    row.append(element("span", label, place >= 0 ? "verdict hit" : "verdict"));
+  } else if (result) {
+    const timing = element("div", undefined, "result-timing");
+    timing.append(element("strong", result.time), element("small", result.points + " pts"));
+    row.append(timing);
   } else {
     row.append(element("span", code, "driver-code"));
   }
@@ -126,10 +130,12 @@ function renderRace(race) {
   byId("round").textContent = "ROUND " + race.round;
   byId("event-name").textContent = race.name + " Grand Prix";
   byId("cutoff").textContent = race.cutoff;
-  byId("forecast").replaceChildren(...race.prediction.map((code, i) => driverRow(code, i, drivers, race.actual)));
-  byId("actual").replaceChildren(...(race.actual ?? []).map((code, i) => driverRow(code, i, drivers)));
+  byId("forecast").replaceChildren(...race.prediction.map((code, i) => driverRow(code, i, drivers, { actual: race.actual })));
+  byId("actual").replaceChildren(...(race.actual ?? []).map((code, i) =>
+    driverRow(code, i, drivers, { result: race.actualDetails?.[i] })
+  ));
   byId("joint").textContent = percent(race.joint) + " model probability for this exact order";
-  byId("result-note").textContent = race.source ?? "This archive does not include a race classification for Las Vegas.";
+  byId("result-note").textContent = race.source ?? "This archive does not include a race classification for this Grand Prix.";
   byId("race-score").textContent = race.actual
     ? overlap(race.prediction, race.actual) + " / 3 podium picks"
     : "Awaiting result in archive";
@@ -149,7 +155,9 @@ function renderScores(races) {
     wins += Number(race.prediction[0] === race.actual[0]);
     fullPodiums += Number(correctNames === race.actual.length);
   }
-  byId("scored").textContent = scored.length + " of " + races.length + " races scored";
+  byId("scored").textContent = scored.length === races.length
+    ? scored.length + " races scored"
+    : scored.length + " of " + races.length + " races scored";
   const slots = scored.length * 3;
   const metrics = [
     [hits, slots, "Podium picks correct", "Driver appeared anywhere on the podium"],

@@ -1,0 +1,7 @@
+{
+  "las-vegas": [
+    {"driver": "VER", "time": "1:27:39.624", "points": 25},
+    {"driver": "NOR", "time": "+0.639s", "points": 18},
+    {"driver": "PIA", "time": "+1.529s", "points": 15}
+  ]
+}
