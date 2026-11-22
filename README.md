@@ -16,6 +16,8 @@ Run `python -m http.server 8000 --directory website` and open [localhost:8000](h
 
 The championship archive includes the final Drivers’ and Constructors’ standings for 2016–2025. To rebuild it from Formula 1’s official results pages, run `python scripts/export_standings.py`. The standings are display data for the website.
 
+The [baseline comparison](docs/baseline-comparison.md) measures where the model improves on qualifying and where pole position predicts the winner more reliably.
+
 ## What this project demonstrates
 
 | Area | Implementation |

@@ -51,9 +51,9 @@ class Trainer:
                 exact_order=actual == predicted, prediction=[field[i]["driver"] for i in predicted])
         return deepcopy(self._scores[key])
 
-    def choose(self, cutoff: int):
+    def choose(self, cutoff: int, *, candidates=CANDIDATES):
         records = []
-        for candidate in CANDIDATES:
+        for candidate in candidates:
             losses = [self.score(r, candidate)["nll"] for r in self.rounds if 4 <= r < cutoff]
             if len(losses) < 2:
                 raise ValueError("Selection requires at least two earlier validation races")
